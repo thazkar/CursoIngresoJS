@@ -1,0 +1,108 @@
+/*
+	Maria F 15
+	Jose  M 33
+	Fer   F 25		
+
+while con contador 3 datos va a pedir 1-nombre, 2-sexo validacion por f o m ,3- edad validacion isNaN, >0 y <100.
+*/
+function mostrar()
+{
+	var nombre;
+	var sexo;
+	var edad;
+	var contador=0;
+	var contadorM=0;
+	var contadorF=0;
+	var contadorMenores=0;
+	var contadorMayores=0;
+	var contadorMayoresF=0;
+	var contadorMenoresF=0;
+	var contadorMayoresM=0;
+	var contadorMenoresM=0;
+	var promediototal;
+	var promediovarones;
+	var promediomujeres;
+	var acumuladoredad=0;
+	var acumuladoredadf=0;
+	var acumuladoredadM=0;
+	var nombremayor;
+	var nombremenor;
+	var nombrefmenor;
+
+	while(contador<3)
+	{
+		nombre=prompt("Ingrese un nombre");
+		
+		sexo=prompt("Ingrese su sexo: f o m");
+		while(sexo!="f" && sexo!="m")
+		{
+			sexo=prompt("Ingrese su sexo valido: f o m");
+		}
+
+		edad=prompt("Ingrese su edad: ");
+		edad=parseInt(edad);
+		while(edad<0 || edad>100 || isNaN(edad))
+		{
+			edad=prompt("Reingrese su edad: ");
+		    edad=parseInt(edad);
+		}
+		/*1-*/
+		if(sexo=="m" )
+		{
+			contadorM++;
+		}
+		else
+		{	
+			contadorF++;
+		}
+		if (edad>17) 
+		{
+			contadorMayores++;
+		}
+		else
+		{
+			contadorMenores++;
+		}
+		if(sexo=="f" && edad>17)
+		{
+			contadorMayoresF++;
+		}
+		else
+		{
+			if(sexo=="f" && edad<17)
+			{
+				contadorMenoresF++;
+			}
+			else
+			{
+				if(sexo=="m" && edad>17)
+				{
+					contadorMayoresM++;
+				}
+				else
+				{
+					contadorMenoresM++;
+				}
+			}
+		}contador++;
+
+		if(sexo=="f")
+		{	acumuladoredadf=edad+acumuladoredadf;
+			promediomujeres=acumuladoredadf/contadorF;
+		}
+		else
+		{	acumuladoredadM=edad+acumuladoredadM;
+			promediovarones=acumuladoredadM/contadorM;
+		}
+  		acumuladoredad=edad+acumuladoredad;
+		promediototal=acumuladoredad/contador;
+		
+
+	}
+
+	/*1-*/ document.write("1)"+"<br/>"+"A- Contador de Mujeres:"+ contadorF + "<br/>" + "B- Contador de varones:" + contadorM+"<br/>"+"C- Contador de menores:"+ contadorMenores+"<br/>"+"D- Contador de Mayores:"+contadorMayores+"<br/>");
+    /*2-*/ document.write("2)"+"<br/>"+"A- Cantidad de Mujeres Mayores:"+ contadorMayoresF+"<br/>"+"B- Cantidad de Varones Mayores:"+ contadorMayoresM+"<br/>"+"C- Cantidad de Mujeres menores:"+contadorMenoresF+"<br/>"+"D- Cantidad de Varones menores:"+contadorMenoresM+"<br/>");
+    /*3-*/ document.write("3)"+"<br/>"+"A- Promedio de edad total: "+promediototal+"<br/>"+"B- Promedio de edad de varones:"+promediovarones+"<br/>"+"C- Promedio de edad de mujeres:"+promediomujeres+"<br/>");
+}
+
+
